@@ -43,7 +43,7 @@ function App() {
         <CustBtn text={8} click={(event) => setExp((prev) => prev + event.target.innerHTML)} />
         <CustBtn text={9} click={(event) => setExp((prev) => prev + event.target.innerHTML)} />
         <CustBtn text={"*"} click={(event) => setExp((prev) => prev + event.target.innerHTML)} /><br />
-        <CustBtn text={"c"} click={(event) => {
+        <CustBtn text={"C"} click={(event) => {
           setExp("");
           setRes();
         }} />
