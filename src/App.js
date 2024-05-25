@@ -12,7 +12,7 @@ function App() {
   const calculate = () => {
     if (exp) {
       if (exp.includes("/0")) {
-        setRes("Infinite");
+        setRes("Infinity");
       } else {
         try {
           setRes(evaluate(exp));
