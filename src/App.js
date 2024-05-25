@@ -1,5 +1,3 @@
-import logo from "./logo.svg";
-import "./App.css";
 import React, { useState } from "react";
 import { evaluate } from 'mathjs';
 
@@ -14,7 +12,7 @@ function App() {
   const calculate = () => {
     if (exp) {
       if (exp.includes("/0")) {
-        setRes("Infinity");
+        setRes("Infinite");
       } else {
         try {
           setRes(evaluate(exp));
@@ -30,7 +28,7 @@ function App() {
   return (
     <div className="main">
       <h1>React Calculator</h1>
-      <input value={exp} />
+      <input type="text" value={exp} />
       <p>{res}</p>
       <div style={{ marginBlockStart: "2rem" }}>
         <CustBtn text={1} click={(event) => setExp((prev) => prev + event.target.innerHTML)} />
