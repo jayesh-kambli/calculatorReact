@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import React, { useState } from "react";
+import { evaluate } from 'mathjs';
 
 function App() {
+  const [exp, setExp] = useState("");
+  const [res, setRes] = useState();
+
+  const CustBtn = ({ text, click }) => {
+    return (<button style={{ width: "3rem", height: "3rem", margin: "0.5rem", border: "2px solid black", borderRadius: "0.4rem" }} onClick={click}>{text}</button>)
+  }
+
+  const calculate = () => {
+    try {
+      setRes(evaluate(exp));
+    } catch (error) {
+      setRes("Error");
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      <h1>React Calculator</h1>
+      <input value={exp} />
+      <p>{res}</p>
+      <div style={{ marginBlockStart: "2rem" }}>
+        <CustBtn text={1} click={(event) => setExp((prev) => prev + event.target.innerHTML)} />
+        <CustBtn text={2} click={(event) => setExp((prev) => prev + event.target.innerHTML)} />
+        <CustBtn text={3} click={(event) => setExp((prev) => prev + event.target.innerHTML)} />
+        <CustBtn text={"+"} click={(event) => setExp((prev) => prev + event.target.innerHTML)} /><br />
+        <CustBtn text={4} click={(event) => setExp((prev) => prev + event.target.innerHTML)} />
+        <CustBtn text={5} click={(event) => setExp((prev) => prev + event.target.innerHTML)} />
+        <CustBtn text={6} click={(event) => setExp((prev) => prev + event.target.innerHTML)} />
+        <CustBtn text={"-"} click={(event) => setExp((prev) => prev + event.target.innerHTML)} /><br />
+        <CustBtn text={7} click={(event) => setExp((prev) => prev + event.target.innerHTML)} />
+        <CustBtn text={8} click={(event) => setExp((prev) => prev + event.target.innerHTML)} />
+        <CustBtn text={9} click={(event) => setExp((prev) => prev + event.target.innerHTML)} />
+        <CustBtn text={"*"} click={(event) => setExp((prev) => prev + event.target.innerHTML)} /><br />
+        <CustBtn text={"c"} click={(event) => {
+          setExp("");
+          setRes();
+        }} />
+        <CustBtn text={0} click={(event) => setExp((prev) => prev + event.target.innerHTML)} />
+        <CustBtn text={"="} click={calculate} />
+        <CustBtn text={"/"} click={(event) => setExp((prev) => prev + event.target.innerHTML)} />
+      </div>
     </div>
   );
 }
