@@ -19,10 +19,10 @@ function App() {
         } catch (error) {
           setRes("Error");
         }
-      }
-    // } else {
-    //   setRes("Error")
-    // }
+      // }
+    } else {
+      setRes("Error")
+    }
   };
 
   return (
