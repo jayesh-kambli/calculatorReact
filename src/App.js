@@ -12,10 +12,18 @@ function App() {
   }
 
   const calculate = () => {
-    try {
-      setRes(evaluate(exp));
-    } catch (error) {
-      setRes("Error");
+    if (exp) {
+      if (exp.includes("/0")) {
+        setRes("Infinity");
+      } else {
+        try {
+          setRes(evaluate(exp));
+        } catch (error) {
+          setRes("Error");
+        }
+      }
+    } else {
+      setRes("Error")
     }
   };
 
